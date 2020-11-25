@@ -3,24 +3,32 @@ package com.brinkley.spring;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Component
 public class MusicPlayer {
     //@Autowired
-    private Music music;
+    //private Music music;
+    private ClassicalMusic classicalMusic;
+    private RockMusic rockMusic;
+    private SynthMusic synthMusic;
 
     @Autowired
-    public MusicPlayer(Music music) {
-        this.music = music;
+    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic, SynthMusic synthMusic) {
+        this.classicalMusic = classicalMusic;
+        this.rockMusic = rockMusic;
+        this.synthMusic = synthMusic;
     }
 
     //@Autowired
-    public void setMusic(Music music) {
-        this.music = music;
-    }
+    //public void setMusic(Music music) {
+    //    this.music = music;
+    //}
     public void playMusic() {
-        System.out.println("Playing: " + music.getSong());
+        System.out.println("Playing: " + classicalMusic.getSong());
+        System.out.println("Next: " + rockMusic.getSong());
+        System.out.println("Next: " + synthMusic.getSong());
+    }
+
+    public String ToString() {
+        return "Playing: " + classicalMusic.getSong();
     }
 }
