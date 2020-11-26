@@ -12,6 +12,7 @@ public class Computer {
     public Computer(MusicPlayer musicPlayer) {
         this.musicPlayer = musicPlayer;
         id = 1;
+
     }
 
     public String ToString() {

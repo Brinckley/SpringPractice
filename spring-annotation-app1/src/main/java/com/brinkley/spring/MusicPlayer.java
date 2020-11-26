@@ -1,6 +1,7 @@
 package com.brinkley.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,7 +20,7 @@ public class MusicPlayer {
     }
 
     //@Autowired
-    //public void setMusic(Music music) {
+    //public void setMusic(@Qualifier("classicalMusic") Music music) {
     //    this.music = music;
     //}
     public void playMusic() {
