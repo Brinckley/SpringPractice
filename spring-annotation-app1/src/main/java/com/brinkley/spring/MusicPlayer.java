@@ -2,6 +2,7 @@ package com.brinkley.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
@@ -10,6 +11,11 @@ enum Genre { Classic, Rock, Synth }
 
 @Component
 public class MusicPlayer {
+    @Value("${musicPlayer.name}")
+    private String Name;
+    @Value("${musicPlayer.volume}")
+    private int Volume;
+
     //@Autowired
     private Music music1;
     private Music music2;
@@ -41,4 +47,11 @@ public class MusicPlayer {
         System.out.println("Playing >> " + songName);
     }
 
+    public String getName() {
+        return Name;
+    }
+
+    public int getVolume() {
+        return Volume;
+    }
 }

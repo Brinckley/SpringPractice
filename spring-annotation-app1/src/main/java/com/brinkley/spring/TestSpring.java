@@ -10,6 +10,8 @@ public class TestSpring {
                 "applicationContext.xml"
         );
         boolean flagWork = true;
+        Computer computer = context.getBean("computer", Computer.class);
+        computer.getPlayerInfo();
         do {
             System.out.println("\nClassical music  --  1");
             System.out.println("Rock music  --  2");
@@ -26,7 +28,6 @@ public class TestSpring {
             }
             System.out.println("\n");
             if (songUser >= 0 && songUser <= 2) {
-                Computer computer = context.getBean("computer", Computer.class);
                 System.out.println(computer.ToString());
                 computer.setOnComposition(Genre.values()[songUser]);
             } else if (songUser == 3) {
