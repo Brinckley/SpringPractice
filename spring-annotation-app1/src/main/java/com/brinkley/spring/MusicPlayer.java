@@ -9,7 +9,7 @@ import java.util.Random;
 
 enum Genre { Classic, Rock, Synth }
 
-@Component
+//@Component
 public class MusicPlayer {
     @Value("${musicPlayer.name}")
     private String Name;
@@ -21,7 +21,7 @@ public class MusicPlayer {
     private Music music2;
     private Music music3;
 
-    @Autowired
+    //@Autowired
     public MusicPlayer(@Qualifier("classicalMusic") Music music1,
                        @Qualifier("rockMusic") Music music2,
                        @Qualifier("synthMusic") Music music3){
@@ -32,7 +32,7 @@ public class MusicPlayer {
 
     public void playMusic(Genre genre) {
         String songName = "";
-        int random = new Random().nextInt(2);
+        int random = new Random().nextInt(3);
         switch (genre){
             case Classic:
                 songName = music1.getSongs().get(random);

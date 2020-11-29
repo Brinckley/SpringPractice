@@ -6,12 +6,12 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Component
+//@Component
 public class Computer {
     private int id;
     private MusicPlayer musicPlayer;
 
-    @Autowired
+    //@Autowired
     public Computer(MusicPlayer musicPlayer) {
         this.musicPlayer = musicPlayer;
         id = 1;

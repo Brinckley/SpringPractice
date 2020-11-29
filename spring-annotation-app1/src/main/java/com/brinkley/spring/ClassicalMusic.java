@@ -1,10 +1,12 @@
 package com.brinkley.spring;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
-@Component
+//@Component
+//@Scope("prototype")
 public class ClassicalMusic implements Music {
     private ArrayList<String> classicList;
 
