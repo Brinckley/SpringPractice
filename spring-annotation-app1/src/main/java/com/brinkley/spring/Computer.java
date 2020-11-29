@@ -12,10 +12,13 @@ public class Computer {
     public Computer(MusicPlayer musicPlayer) {
         this.musicPlayer = musicPlayer;
         id = 1;
+    }
 
+    public void setOnComposition(Genre genre) {
+        musicPlayer.playMusic(genre);
     }
 
     public String ToString() {
-        return "Computer " + id + " " + musicPlayer.ToString();
+        return "Computer " + id + "@@@";
     }
 }
