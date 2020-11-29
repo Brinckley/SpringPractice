@@ -4,32 +4,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import java.util.Random;
+
+enum Genre { Classic, Rock, Synth }
+
 @Component
 public class MusicPlayer {
     //@Autowired
-    //private Music music;
-    private ClassicalMusic classicalMusic;
-    private RockMusic rockMusic;
-    private SynthMusic synthMusic;
+    private Music music1;
+    private Music music2;
+    private Music music3;
 
     @Autowired
-    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic, SynthMusic synthMusic) {
-        this.classicalMusic = classicalMusic;
-        this.rockMusic = rockMusic;
-        this.synthMusic = synthMusic;
+    public MusicPlayer(@Qualifier("classicalMusic") Music music1,
+                       @Qualifier("rockMusic") Music music2,
+                       @Qualifier("synthMusic") Music music3){
+        this.music1 = music1;
+        this.music2 = music2;
+        this.music3 = music3;
     }
 
-    //@Autowired
-    //public void setMusic(@Qualifier("classicalMusic") Music music) {
-    //    this.music = music;
-    //}
-    public void playMusic() {
-        System.out.println("Playing: " + classicalMusic.getSong());
-        System.out.println("Next: " + rockMusic.getSong());
-        System.out.println("Next: " + synthMusic.getSong());
+    public void playMusic(Genre genre) {
+        String songName = "";
+        int random = new Random().nextInt(2);
+        switch (genre){
+            case Classic:
+                songName = music1.getSongs().get(random);
+                break;
+            case Rock:
+                songName = music2.getSongs().get(random);
+                break;
+            case Synth:
+                songName = music3.getSongs().get(random);
+                break;
+        }
+        System.out.println("Playing >> " + songName);
     }
 
-    public String ToString() {
-        return "Playing: " + classicalMusic.getSong();
-    }
 }
