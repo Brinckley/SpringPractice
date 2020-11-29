@@ -1,15 +1,19 @@
 package com.brinkley.spring;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Scanner;
 
 public class TestSpring {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-                "applicationContext.xml"
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
+                SpringConfig.class
         );
+
         boolean flagWork = true;
+        Computer computer = context.getBean("computer", Computer.class);
+        computer.getPlayerInfo();
         do {
             System.out.println("\nClassical music  --  1");
             System.out.println("Rock music  --  2");
@@ -26,7 +30,6 @@ public class TestSpring {
             }
             System.out.println("\n");
             if (songUser >= 0 && songUser <= 2) {
-                Computer computer = context.getBean("computer", Computer.class);
                 System.out.println(computer.ToString());
                 computer.setOnComposition(Genre.values()[songUser]);
             } else if (songUser == 3) {
